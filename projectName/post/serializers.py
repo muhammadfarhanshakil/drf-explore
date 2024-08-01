@@ -3,6 +3,9 @@ from .models import Post
 from django.contrib.auth.models import User
 
 class PostSerializer(serializers.Serializer):
+    id = serializers.PrimaryKeyRelatedField(
+        read_only=True
+    )
     title = serializers.CharField(max_length=255)
     niche = serializers.CharField(max_length=60)
     author = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
